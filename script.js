@@ -36,7 +36,20 @@ const playRound = function(playerselection,computerSelection){
      }
 }
 
-playerselection = "Rock"
-computerSelection = getcomputerChoice()
+// playerselection = "Rock"
+// computerSelection = getcomputerChoice()
 
-console.log(playRound(playerselection,computerSelection))
+// console.log(playRound(playerselection,computerSelection))
+
+
+const game = function(){
+    for (let i = 0;i < 5;i++){
+         console.log("starting game ...")
+         const playerselection = "Rock";
+         const computerSelection = getcomputerChoice();
+         console.log(playRound(playerselection,computerSelection))
+
+    }
+}
+
+game()
