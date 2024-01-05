@@ -1,25 +1,42 @@
 console.log("hello")
 
 //getting a random hoice from the computer
-const computerChoice = function(){
-    let choices = ["Rock","Paper","Scissors"]
+let choices = ["Rock","Paper","Scissors"]
+const getcomputerChoice = function(){
     let choice = choices[Math.ceil(Math.random()* choices.length - 1)]
     console.log(choice)
     return choice
 }
 
 
-const round = function(playerselection = "Rock", computerSelection){
-    computerSelection = computerChoice()
-    
-    if (playerselection === computerSelection){
-        console.log("Its a tie")
-    }else if (playerselection === "Rock" && computerSelection === "Scissors" || playerselection === "Scissors" && computerSelection === "Paper" || playerselection === "Paper" && computerSelection === "Rock" ){
-        console.log("player wins")
-    }else{
-        console.log("computer wins")
+const checkWinner = function(playerselection, computerSelection){
+    if (playerselection == computerSelection){
+        return "tie";
     }
-
+    else if(
+        (playerselection === "Rock" && computerSelection === "Scissors")||
+        (playerselection === "Scissors" && computerSelection === "Paper") || 
+        (playerselection === "Paper" && computerSelection === "Rock")
+        ){
+            return "Player";
+        }
+        else{
+            return "Computer"
+        }
 }
 
-round()
+const playRound = function(playerselection,computerSelection){
+    const result = checkWinner(playerselection, computerSelection)
+     if(result == "tie"){
+        return "its a tie"
+     }else if(result == "Player"){
+        return `Player wins, ${playerselection} beats ${computerSelection}`
+     }else{
+        return `Computer wins, ${computerSelection} beats ${playerselection}`
+     }
+}
+
+playerselection = "Rock"
+computerSelection = getcomputerChoice()
+
+console.log(playRound(playerselection,computerSelection))
